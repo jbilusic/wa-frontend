@@ -3,12 +3,11 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
+        <link rel="shortcut icon" href="#">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="/assets/main.css">
         <script src="https://unpkg.com/vue@3"></script>
-        <!-- google fonts  d-->
+        <!-- google fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Raleway:wght@300;400;500;700;900&display=swap" rel="stylesheet">
         <!-- font -->
         <script src="https://kit.fontawesome.com/dbed6b6114.js" crossorigin="anonymous"></script>
@@ -32,12 +31,15 @@
                         </span>
                     </div>
                 </div>
-
                 <!-- nav bar -->
                 <div class = "nav-bar" id = "nav-bar">
                     <nav>
                         <ul>
-                            <li v-for="link in links"><a v-bind:href="link.url">{{ link.text }}</a></li>
+                            <li v-for="(link, index) in links" :key="index">
+                                <a :href="link.url" @click="">
+                                    {{ link.text }}
+                                </a>
+                            </li>
                         </ul>
                     </nav>
                 </div>
@@ -47,7 +49,7 @@
                             <img src = "/assets/imgs/icon.png">
                         </div>
                     </div>
-             
+                    
                     <div class="search-container">
                         <input type="text" placeholder="Search...">
                         <button type="submit"><i class="fa fa-search"></i></button>
@@ -58,115 +60,90 @@
         <hr>
         <main>
             <section class = "main-container-left">
-                <h2 style="text-align: center;">VIJESTI</h2>
+                <h2 id="mainTitle">{{ vijesti }}</h2>
                 <div class="holder">
-                    <div class="leftEmpty">
-
-                    </div>
+                    <div class="leftEmpty"></div>
                     <div class="container-top-left">
                         <div class="news-log">
-                            <div class="news-item">
-                            <h3>Najčitanije</h3>
-                              <div class="ref">
-                                <span class="topListNum">1</span>
-                                <p class="topListParag">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            <div class="weather-forecast">
+                                <h2 class="date">Subota,  3. Travanj</h2>
+                                <h2 class="time">12:30 </h2>
                               </div>
-                            </div>
-                            <div class="news-item">
-                                <div class="ref">
-                                    <span class="topListNum">1</span>
-                                    <p class="topListParag">Etiam vel augue non velit euismod laoreet.</p>
-                                  </div>
-                            </div>
-                            <div class="news-item">
-                                <div class="ref">
-                                    <span class="topListNum">1</span>
-                                    <p class="topListParag">Etiam vel augue non velit euismod laoreet.</p>
-                                  </div>
-                            </div>
-                            <div class="news-item">
-                                <div class="ref">
-                                    <span class="topListNum">1</span>
-                                    <p class="topListParag">Proin sodales sapien ac massa molestie imperdiet.</p>
-                                  </div>
+                            <h3>{{ leftTitle }}</h3>
+                            <div class="news-item" v-for="(content, index) in leftContent" :key="index">
+                              <div class="ref">
+                                <span class="topListNum">{{ index+=1 }}</span>
+                                <p class="topListParag">{{ content }}</p>
+                              </div>
                             </div>
                           </div>
-                          
                     </div>
                     <div class = "container-top-middle">
-                        <article id="article1">
+                        <article v-for="(content, index) in mainArticle" :key="index" id="firstArticle">
                             <div class="articleTitle">
-                                <h1>Random text</h1>
+                                
                             </div>
-                            <div class="contentContainer">
+                            <div class="contentContainer"> 
                                 <div class="imgSide">
                                     <div class="imgContainer">
-                                        <img src = "/assets/imgs/1.jpg">
+                                        <img v-bind:src="'/assets/imgs/' + content.img">
                                     </div>
                                 </div>
                                 <div class="textSide">
-                                    <!-- <h3>{{ test }}</h3> -->
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        
-                                    <p>Maecenas volutpat blandit aliquam etiam erat velit scelerisque in. Ut lectus arcu bibendum at varius vel. Duis ut diam quam nulla porttitor massa id neque aliquam. Nulla pellentesque dignissim enim sit amet. Donec ac odio tempor orci dapibus ultrices in. Odio ut sem nulla pharetra diam sit amet nisl. Orci ac auctor augue mauris augue neque gravida. Libero justo laoreet sit amet cursus sit amet.</p>
-                                    
-                                  
-                                    
+                                    <h3>{{ content.middleTitle }}</h3>
+                                    <p v-for="(content1, index1) in mainArticle[index].p" :key="index1">{{ content1 }}</p>
                                     <a href = "#">Read More <span>>></span></a>
                                 </div>
                             </div>
-                        </article>
-                        <div class="wallpaper-divider" ></div>
-                        <article id="article2">
-                            <div class="articleTitle">
-                                <h1>Random text</h1>
-                            </div>
-                            <div class="contentContainer">
-                                <div class="imgSide">
-                                    <div class="imgContainer">
-                                        <img src = "/assets/imgs/1.jpg">
+                        </article> 
+                        <div id="secondaryArticles">
+                            <article v-for="(content, index) in article" :key="index" class="articles">
+                                <div class="articleTitle">
+                                </div>
+                                <div class="contentContainer2"> 
+                                    <div class="imgSide">
+                                        <div class="imgContainer">
+                                            <img v-bind:src="'/assets/imgs/' + content.img">
+                                        </div>
+                                    </div>
+                                    <div class="textSide">
+                                        <h3>{{ content.middleTitle }}</h3>
+                                        <a href = "#">Read More <span>>></span></a>
                                     </div>
                                 </div>
-                                <div class="textSide">
-                                    <!-- <h3>{{ test }}</h3> -->
-                                    <p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        
-                                    <p>Maecenas volutpat blandit aliquam etiam erat velit scelerisque in. Ut lectus arcu bibendum at varius vel. Duis ut diam quam nulla porttitor massa id neque aliquam. Nulla pellentesque dignissim enim sit amet. Donec ac odio tempor orci dapibus ultrices in. Odio ut sem nulla pharetra diam sit amet nisl. Orci ac auctor augue mauris augue neque gravida. Libero justo laoreet sit amet cursus sit amet.</p>
-                                    
-                                    <a href = "#">Read More <span>>></span></a>
-                                </div>
-                            </div>
-                        </article>
+                            </article>  
+                        </div> 
                         
+                        <div class="wallpaper-divider"></div>
+                        <button id="myButton">Učitaj još</button>
+             
                     </div>
+
+                    <div class="rightEmpty"></div>
                     <div class="container-top-right">
-                  
                         <div class="news-log">
-                            <div class="news-item">
-                            <h3>Najčitanije</h3>
-                              <div class="ref">
-                                <span class="topListNum">1</span>
-                                <p class="topListParag">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            <div class = "social-icons">
+                                <ul>
+                                    <li>
+                                        <a href= "#"><i class = "fab fa-facebook fa-2x"></i></a>
+                                        <a href= "#"><i class = "fab fa-twitter fa-2x"></i></a>
+                                    </li>
+                         
+                                    <li>
+                                        <a href= "#"><i class = "fab fa-instagram fa-2x"></i></a>
+                                        <a href= "#"><i class = "fab fa-youtube fa-2x"></i></a>
+                                    </li>
+                             
+                                </ul>
+                            </div>
+                              <h3>{{ rightTitle }}</h3>
+                              <div class="news-item"  v-for="(content, index) in rightContent" :key="index">
+                                <div class="ref">
+                                  <span class="topListNum">{{ index+=1 }}</span>
+                                  <p class="topListParag">{{ content}}</p>
+                                </div>
                               </div>
-                            </div>
-                            <div class="news-item">
-                                <div class="ref">
-                                    <span class="topListNum">1</span>
-                                    <p class="topListParag">Etiam vel augue non velit euismod laoreet.</p>
-                                  </div>
-                            </div>
-                            <div class="news-item">
-                                <div class="ref">
-                                    <span class="topListNum">1</span>
-                                    <p class="topListParag">Etiam vel augue non velit euismod laoreet.</p>
-                                  </div>
-                            </div>
-                            <div class="news-item">
-                                <div class="ref">
-                                    <span class="topListNum">1</span>
-                                    <p class="topListParag">Proin sodales sapien ac massa molestie imperdiet.</p>
-                                  </div>
-                            </div>
+                              
                           </div>
                           
                     </div>
@@ -191,68 +168,62 @@
                     </div>
                 </div>
             </div>
-            <p>Copyright &copy; 2025 All rights reserved | GeekProbin</p>
+            <p>Copyright &copy; 2023 All rights reserved | Josephina</p>
         </footer>
-
-        
-
-
     </body>
-    <script src="script.js" async defer></script>
-        <script>const btnHam = document.querySelector('.ham-btn');
-            const btnTimes = document.querySelector('.times-btn');
-            const navBar = document.getElementById('nav-bar');
-            
-            btnHam.addEventListener('click', function(){
-                if(btnHam.className !== ""){
-                    btnHam.style.display = "none";
-                    btnTimes.style.display = "block";
-                    navBar.classList.add("show-nav");
-                }
-            })
-            
-            btnTimes.addEventListener('click', function(){
-                if(btnHam.className !== ""){
-                    this.style.display = "none";
-                    btnHam.style.display = "block";
-                    navBar.classList.remove("show-nav");
-                }
-            })
-    </script>
-    <script>
+    <script  src="/assets/main.js"></script>
+    <script >
         Vue.createApp({
             data(){
                 return{
                     links:[
-                            {text:'Home', url:'#'},
-                            {text:'current affairs', url:'#2'},
-                            {text:'archive', url:'#3'},
-                            {text:'featured', url:'#4'},
-                            {text:'category', url:'#5'},
+                            {text:'Naslovna', url:'#'},
+                            {text:'Lifestyle', url:'#2'},
+                            {text:'Schi/Tech', url:'#3'},
+                            {text:'Sport', url:'#4'},
+                            {text:'Viral', url:'#5'},
                              ]
+                            ,
+                    title:'TECHNEWS',
+                    vijesti:"VIJESTI",
+                    leftTitle:"Najčitanije",
+                    leftContent:[
+                         'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                         'Etiam vel augue non velit euismod laoreet.',
+                         'Proin sodales sapien ac massa molestie imperdiet.',
+                         'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+
+                    ],
+                    rightTitle:"Najnovije",
+                    rightContent:[
+                         'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                         'Etiam vel augue non velit euismod laoreet.',
+                         'Proin sodales sapien ac massa molestie imperdiet.',
+                         'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+
+                    ],
+                    article:[
+                        {   
+                            middleTitle:'Voditeljica se oprostila od RTL-a, a sada je poznato i gdje nastavlja svoju karijeru i na kojoj poziciji ',     
+                            img:'2.jpeg'
+                        },
+                        {   
+                            middleTitle:'Žurio kod veterinara? Policija objavila urnebesnu fotografiju, traže vozača zbog prebrze vožnje ',
+                            img:'3.png'
+                        }
+                        
+                    ],
+                    mainArticle:[
+                    {
+                            middleTitle:'Upozorenje vrhunskog fizičara: AI-u se ne smije dati tri stvari. Dali smo mu sve tri ', 
+                            p:['U podcastu Lexa Fridmana, informatičara i istraživača umjetne inteligencije na Massachusetts Institute of Technologyju (MIT), Max Erik Tegmark, fizičar, kozmolog i istraživač strojnog učenja, profesor na MIT-ju i predsjednik Future of Life Instituta, objasnio je, među ostalim, zašto je zabrinut sadašnjim načinom razvoja umjetne inteligencije i zašto je sa skupinom znanstvenika, mislilaca i stručnjaka za umjetnu inteligenciju pokrenuo otvoreno pismo kojim traže šestomjesečni moratorij na daljnje unapređivanje sustava moćnijih nego što je GPT-4.'
+                            ],
+                            img:'1.jpg'
+                        }
+                    ]
+                    
                 };
             }
-        }).mount('.nav-bar');
-        Vue.createApp({
-            data(){
-                return{
-                    test:'Best Used Cars Under $20, 000 for families'
-                };
-            }
-        }).mount('#article1');
-        Vue.createApp({
-            data(){
-                return{
-                    test:'Neki naslov'
-                };
-            }
-        }).mount('#article2');
-        Vue.createApp({
-            data(){
-                return{
-                    title:'TECHNEWS'
-                };
-            }
-        }).mount('.web-name');
+        }).mount('body');
     </script>
 </html>

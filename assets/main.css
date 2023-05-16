@@ -40,6 +40,11 @@ hr{
 }
 
 /* header */
+header{
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
 
 .top-head{
     display: flex;
@@ -149,6 +154,7 @@ main{
     display: flex;
     justify-content: center;
     height: auto;
+    margin-top: 100px;
 }
 
 main a{
@@ -166,7 +172,7 @@ main a:hover span{
 }
 
 main a:hover{
-    color: #7ac64d;
+    color: #e71d1d;
 }
 
 /* main container left */
@@ -190,21 +196,38 @@ main a:hover{
  
     font-weight: 300;
 }
+#secondaryArticles{
+    display: flex;
+    justify-content: center ;
+}
 
+.articles{
+    display: flex;
+    margin: 10px;
+  
+    justify-content: center;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    width: 50%;
+}
+.articles:hover{
+    background-color:#f2f1f1;
+}
 
-.main-container-left article{
+#firstArticle
+{
     display: flex;
     justify-content: center;
     flex-direction: column;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+#firstArticle:hover{
+    background-color:#f2f1f1;
 }
 
 
-.main-container-left article:hover{
 
-    background-color: #f5f5f5;
-
-}
 .holder{
     display: flex;
     justify-content: center;
@@ -213,13 +236,27 @@ main a:hover{
     display: flex;
     justify-content: center;
     padding-bottom: 50px;
-
+    width: 100%;
+}
+.contentContainer2{
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 .articleTitle{
     text-transform: uppercase;
     padding: 15px;
     text-align: center;
     font-size: 22px;
+}
+.articleTitle:hover{
+   
+}
+#mainTitle{
+  font-size: 36px;
+   margin-right:30px;
+   text-align: center;
+    color:#e71d1d;
 }
 
 .container-top-middle{
@@ -229,6 +266,9 @@ main a:hover{
     align-items: center;
     padding: 15px 30px;
     width: 70%;
+}
+.container-top-middle:hover{
+  /*   color:#e71d1d; */
 }
 .container-top-left{
     margin-top: 50px;
@@ -244,10 +284,15 @@ main a:hover{
 .leftEmpty{
     width: 15%;
 }
+.rightEmpty{
+    width: 15%;
+}
 .ref{
 display: flex;
 justify-content: space-evenly;
 background-color: #f6f6f6;
+border-bottom: solid 1px black;
+margin-bottom: 10px;
 }
 .ref:hover{
     background-color: #dcd8d8;
@@ -257,24 +302,27 @@ background-color: #f6f6f6;
     padding: 20px;
     margin: 15px;
     color: white;
+    
+}
+.topListNum:hover{
+    background-color:#7c1a1a;
 }
 .topListParag{
         display: flex;
         justify-content: center;
         align-items: center;
 }
-.news-item{
-    border-bottom: solid 1px black;
-    margin-bottom: 10px;
-}
 
 .container-top-right{
+    margin-right: 20px;
     margin-top: 50px;
     display: flex;
     justify-content: center;
     width: 15%;
     height: auto;
-    margin-right: 20px;
+    position: fixed;
+    right:0;
+    top: 50px;
 }
 
 
@@ -292,17 +340,108 @@ background-color: #f6f6f6;
     font-size: 16px;
     gap: 10px;
 }
-
+.textSide p{
+    color:black;
+}
+.textSide p:hover{
+        color:black;
+}
 .imgSide{
     width: 70%;
     display: flex;
     justify-content: center;
 }
 .imgContainer{
-    width: 95%;
+    width: 90%;
     margin-top: 20px;
 }
+.imgContainer img{
+   
+    border-radius: 5px;
+}
+.imgContainer :hover{
 
+}
+/* LEFT SIDE */
+
+.weather-forecast {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .date {
+    color: #999;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .time {
+    color: #333;
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom:5px;
+  }
+  .time:hover{
+    color: #e71d1d;
+  }
+
+  /* RIGHT SIDE */
+
+  .social-icons{
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 4px;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .social-icons li{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+
+  }
+  .social-icons a{
+    width: 50%;
+    border-radius: 10px;
+
+  }
+  .social-icons a:hover{
+    width: 50%;
+    background-color: #333;;
+  }
+
+  .social-icons i{
+  
+  }
+
+
+
+
+/* BOTTOM MAIN */
+
+#myButton {
+  background-color: #e71d1d;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+#myButton:hover{
+    background-color: #a00f0f;
+  }
 
 
 /****** footer *****/
