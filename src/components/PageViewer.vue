@@ -22,6 +22,9 @@
                 <div class = "container-top-middle">
                     <MainContent />
                     <ContentBottom />
+                    <ContentBottom />
+                    <ContentBottom />
+              
                    
                     <div class="wallpaper-divider"></div>
                     <button id="myButton">Učitaj još</button>

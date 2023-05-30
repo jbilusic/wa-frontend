@@ -1,5 +1,5 @@
 <template>   
-<router-link to="/article">
+<router-link to="article/id1">
         <article v-for="(content, index) in mainArticle" :key="index" id="firstArticle">
             <div class="articleTitle">
                 
@@ -13,6 +13,7 @@
                 </div>
                 <div class="textSide">
                     <h3>{{ content.middleTitle }}</h3>
+                    
                     <p v-for="(content1, index1) in mainArticle[index].p" :key="index1">{{ content1 }}</p>
                     <a href = "#">Read More <span>>></span></a>
                 </div>
@@ -29,7 +30,8 @@
                    
                     mainArticle:[
                     {
-                            middleTitle:'Upozorenje vrhunskog fizičara: AI-u se ne smije dati tri stvari. Dali smo mu sve tri ', 
+                            middleTitle:'Upozorenje vrhunskog fizičara: AI-u se ne smije dati tri stvari. Dali smo mu sve tri ',
+
                             p:['U podcastu Lexa Fridmana, informatičara i istraživača umjetne inteligencije na Massachusetts Institute of Technologyju (MIT), Max Erik Tegmark, fizičar, kozmolog i istraživač strojnog učenja, profesor na MIT-ju i predsjednik Future of Life Instituta, objasnio je, među ostalim, zašto je zabrinut sadašnjim načinom razvoja umjetne inteligencije i zašto je sa skupinom znanstvenika, mislilaca i stručnjaka za umjetnu inteligenciju pokrenuo otvoreno pismo kojim traže šestomjesečni moratorij na daljnje unapređivanje sustava moćnijih nego što je GPT-4.'
                             ],
                             img:'1.jpg'

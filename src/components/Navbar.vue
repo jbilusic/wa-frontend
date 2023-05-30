@@ -35,7 +35,9 @@
                 <div class = "top-head">
                     <div class="loginContainer">
                         <div class="loginIcon">
+                            <router-link to="/login">
                             <img src = "../assets/imgs/icon.png">
+                             </router-link>
                         </div>
                     </div>
                     <div class="search-container">

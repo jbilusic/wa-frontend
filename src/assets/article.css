@@ -2,6 +2,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  
 }
 
 :root{
@@ -11,6 +12,8 @@
 body{
   font-family: 'Raleway', sans-serif;
   background: #fff;
+  font-family: 'Georgia', sans-serif;
+  
 }
 
 /* global styling */
@@ -40,6 +43,39 @@ hr{
 }
 
 
+#firstArticle1
+{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  margin-bottom: 20px;
+  width: 100%;
+  background-image: url(./imgs/test1.png);
+}
+
+.contentContainer3{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  padding: 20px 0;
+  
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), transparent);
+  
+}
+
+.containerOfContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 70%;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  padding-top: 20px;
+  background-color: #fff;
+}
 
 .comments-section {
   width: 100%;
@@ -194,4 +230,54 @@ hr{
 
 .comment-action.like i, .comment-action.dislike i, .comment-action.reply i {
   margin-right: 5px;
+}
+
+
+
+.articleTitle2{
+  border-bottom: 1px solid gray;
+  margin-bottom: 20px;
+}
+.articleInfo{
+  width: 80%;
+}
+.articleInfo p{
+  font-size: 12px;
+  margin: 5px 0px 24px 0;
+  
+}
+.imgSide2{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.imgContainer2{
+  width: 80%;
+}
+.imgContainer2 img{
+ 
+  border-radius: 5px;
+}
+.imgContainer2 :hover{
+
+}
+
+
+.textSide3{
+  width: 60%;
+  display: flex;
+  margin: 40px;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 18px;
+  padding-bottom: 100px;
+  letter-spacing: 0.56px;
+  line-height: 25px;
+  border-bottom: 1px solid gray;
+}
+.line{
+  border-bottom: 1px solid gray;
+  width: 60%;
+  margin-bottom: 10px;
 }

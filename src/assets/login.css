@@ -1,0 +1,111 @@
+
+.login{
+  height: 92vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f2f2f2;
+  background-image: url(./imgs/background.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.loginMainContainer{
+  max-width: 500px;
+  width: 400px;
+  min-height: 400px;
+  height: 80%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loginBox{
+  background-color: #fff;
+  height: auto;
+  width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  margin: 100px auto;
+  border-radius: 10px;
+  padding: 30px;
+  box-sizing: border-box;
+  border: 1px solid gray;
+ 
+}
+
+.loginBox h2 {
+  text-align: center;
+  font-size: 28px;
+  color: #444;
+  margin-bottom: 40px;
+}
+
+.loginBox input[type="text"],
+input[type="email"],
+.loginBox input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #e7e7e7;
+  font-size: 16px;
+  color: #555;
+  box-sizing: border-box;
+}
+
+.loginBox input[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #e71d1d;;
+  font-size: 18px;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+#secondBtnDiv{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+}
+#secondBtnDiv a{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.loginBox #second {
+  width: 60%;
+  padding: 8px;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  background-color: #252525;
+  font-size: 16px;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.loginBox #second:hover {
+background-color: #555555;
+}
+
+
+.loginBox input[type="submit"]:hover {
+  background-color: #a00f0f;
+}
+
+.loginBox a {
+  color: #444;
+  text-decoration: none;
+  font-size: 14px;
+  
+}
+
+.loginBox a:hover {
+  text-decoration: underline;
+}

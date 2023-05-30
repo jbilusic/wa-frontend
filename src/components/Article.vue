@@ -10,21 +10,26 @@
                     <div class="articleTitle2">
                         <h3>{{ content.middleTitle }}</h3>
                     </div>
+                    <div class="articleInfo">
+                        <h5>Technews, admin</h5>
+                        <p>Zadnja nadopuna: 15:10, 04. veljače 2023.</p>
+                    </div>
                     <div class="imgSide2">
-                        <div class="imgContainer">
+                        <div class="imgContainer2">
                             <!-- <img v-bind:src="'../assets/imgs/' + content.img"> -->
                             <img src="../assets/imgs/1.jpg">
                         </div>
                     </div>
                     <div class="textSide3">
-                        
-                        <p style="padding-bottom: 20px;" v-for="(content1, index1) in mainArticle[index].p" :key="index1">{{ content1 }}</p>
+                        <!-- <h4 style="padding-bottom: 10px;">{{ content.title }}</h4> -->
+                        <p style="margin-bottom: 24px;" v-for="(content1, index1) in mainArticle[index].p" :key="index1">{{ content1 }}</p>
                         
                     </div>
-                 
-                </div>
-                <hr>
                     <Comments />
+                    <div class="line"> </div>
+                </div>
+                
+               
             </div>
             
         </article> 
@@ -53,7 +58,8 @@
                             , "Tegmark već godinama upozorava na AI"
 
                       ],
-                            img:'1.jpg'
+                            img:'1.jpg',
+                            title:"test"
                         }
                     ]
             }

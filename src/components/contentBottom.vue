@@ -29,12 +29,12 @@
                         {   
                             middleTitle:'Voditeljica se oprostila od RTL-a, a sada je poznato i gdje nastavlja svoju karijeru i na kojoj poziciji ',     
                             img:'2.jpeg',
-                            path:"/article2"
+                            path:"article/id2"
                         },
                         {   
                             middleTitle:'Žurio kod veterinara? Policija objavila urnebesnu fotografiju, traže vozača zbog prebrze vožnje ',
                             img:'3.png',
-                            path:"/article3"
+                            path:"article/id3"
                         }
                         
                     ]
