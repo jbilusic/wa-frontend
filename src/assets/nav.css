@@ -1,0 +1,42 @@
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+:root{
+  --heading: 'Montserrat', sans-serif;
+}
+
+body{
+  font-family: 'Raleway', sans-serif;
+  background: #fff;
+ 
+}
+
+/* global styling */
+
+.wallpaper-divider {
+  padding-top: 2%;
+  text-align:center;
+  /*box-shadow: 0 1em 1em -1em rgba(0, 0, 0, .65);*/
+
+}
+
+img{
+  width: 100%;
+}
+ul{
+  list-style: none;
+}
+
+a{
+  text-decoration: none;
+  color: #000;
+}
+
+hr{
+  width: 95vw;
+  margin: 0 auto;
+}
+

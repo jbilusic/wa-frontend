@@ -250,10 +250,37 @@ hr{
   width: 100%;
   display: flex;
   justify-content: center;
+
+}
+.imgSide3{
+  width: 100%;
+  display: flex;
+ 
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .imgContainer2{
   width: 80%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.imgContainer3{
+  width: 80%;
+  min-height: 500px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+#top-part-upload{
+  width: 100%;
+  margin: 20px;
+  display: flex;
+  justify-content: center;
 }
 .imgContainer2 img{
  
@@ -262,6 +289,27 @@ hr{
 .imgContainer2 :hover{
 
 }
+.choose-holder{
+display: flex;
+justify-content: center;
+flex-direction: column;
+align-items: center;
+background-color: #e71d1d;
+cursor: pointer;
+padding: 10px 10px;
+text-align: center;
+color: white;
+text-decoration: none;
+margin: 4px 2px;
+
+border-radius: 10px;
+}
+.choose-holder:hover{
+  background-color: #a00f0f;
+
+  }
+
+
 
 
 .textSide3{
@@ -276,8 +324,101 @@ hr{
   line-height: 25px;
   border-bottom: 1px solid gray;
 }
+.textSide4{
+  width: 60%;
+  display: flex;
+  margin: 40px;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 18px;
+  padding-bottom: 100px;
+  letter-spacing: 0.56px;
+  line-height: 25px;
+
+}
+textarea{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 18px;
+  padding-bottom: 100px;
+  margin-bottom: 20px;
+  letter-spacing: 0.56px;
+  line-height: 25px;
+  font-family: 'Georgia', sans-serif;
+  border-bottom: 1px solid gray;
+  resize: vertical;
+
+}
 .line{
   border-bottom: 1px solid gray;
   width: 60%;
   margin-bottom: 10px;
+}
+
+
+.circle-holder{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.circle-container { 
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  max-height: 600px;
+}
+.circle-container img {
+  width: 100%;
+}
+
+#btnParagrafHolder{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.myButton2 {
+  background-color: #e71d1d;
+  border: none;
+  color: white;
+  padding: 8px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 10px;
+  }
+  .myButton2:hover{
+    background-color: #a00f0f;
+  }
+
+  .myButton3 {
+    background-color: #e71d1d;
+    width: 100%;
+    border: none;
+    color: white;
+    padding: 8px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 20px 0 0 2px;
+    cursor: pointer;
+
+    }
+    .myButton3:hover{
+      background-color: #a00f0f;
+    }
+
+#naslovStylingInput{
+  width: 1200px;
+  height: 40px;
+  font-size: 24px;
+  text-align: center;
+  text-transform: uppercase;
 }
