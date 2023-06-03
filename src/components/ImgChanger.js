@@ -22,23 +22,6 @@ const textSide3 = document.querySelector('.textSide4');
 
 const postImg = "http://localhost:3000/article/add";
 
-/* myButton2.addEventListener('click', () => {
-  console.log("radi");
-  const textarea = document.createElement('textarea');
-  textarea.placeholder = 'Upiši paragraf..';
-  textSide3.appendChild(textarea);
-});
-
-myButton3.addEventListener('click', () => {
-  const textareas = textSide3.getElementsByTagName('textarea');
-  if (textareas.length > 0) {
-    const lastTextarea = textareas[textareas.length - 1];
-    textSide3.removeChild(lastTextarea);
-  }
-}); */
-
-
-
 let changedImg = false;
 const fileTypes = [
     "image/apng",
