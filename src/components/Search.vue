@@ -1,45 +1,94 @@
 <template>   
-<router-link to="article/645ec67d28142f170712e76d">
-        <article v-for="(content, index) in mainArticle" :key="index" id="firstArticle">
-            <div class="articleTitle">
-                    
-            </div>
-            <div class="contentContainer"> 
-                <div class="imgSide">
-                    <div class="imgContainer">
-                        <!-- <img v-bind:src="'../assets/imgs/' + content.img"> -->
-                        <img src="../assets/imgs/1.jpg">
-                    </div>
+    <div id="backgroundOfSearchFile">
+        <div id="backgroundOfSearchFile2">
+        <section class="searchContentHolder">
+            <div class="searchContent">
+                <div id="secondaryArticles">
+                    <router-link v-for="(content, index) in articles" :key="index" :to="`/article/${content._id}`">
+                        <article class="articles">
+                            <div class="contentContainer2"> 
+                                <div class="imgSide">
+                                    <div class="imgContainer">
+                                        <img :src="getImageUrl(content.img)">
+                                    </div>
+                                </div>
+                                <div class="texSideContainer">
+                                    <div class="textSide2">
+                                        <h3>{{ content.title }}</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </article> 
+                    </router-link>
+                </div> 
+                <div class="wallpaper-divider"></div>
+                <div class="nothingToShow">
+                  <h1>Nema artikl po tome imenu</h1>
                 </div>
-                <div class="textSide">
-                    <h3>{{ content.middleTitle }}</h3>
-                        
-                    <p v-for="(content1, index1) in mainArticle[index].p" :key="index1">{{ content1 }}</p>
-                    <a href = "#">Read More <span>>></span></a>
-                </div>
+        
             </div>
-        </article> 
-    </router-link>
+        </section>
+        </div>
+    </div>
 </template>
     
 <script>
+
     export default{
+
+        watch: {
+            '$route.query.q': {
+            immediate: true,
+            handler(newValue, oldValue) {
+                if (newValue !== oldValue) 
+                    this.fetchArticles();
+            },
+            },
+        },
            
-        data(){
-            return{
-                        
-                       
-                    mainArticle:[
-                    {
-                            middleTitle:'Upozorenje vrhunskog fizičara: AI-u se ne smije dati tri stvari. Dali smo mu sve tri ',
-    
-                            p:['U podcastu Lexa Fridmana, informatičara i istraživača umjetne inteligencije na Massachusetts Institute of Technologyju (MIT), Max Erik Tegmark, fizičar, kozmolog i istraživač strojnog učenja, profesor na MIT-ju i predsjednik Future of Life Instituta, objasnio je, među ostalim, zašto je zabrinut sadašnjim načinom razvoja umjetne inteligencije i zašto je sa skupinom znanstvenika, mislilaca i stručnjaka za umjetnu inteligenciju pokrenuo otvoreno pismo kojim traže šestomjesečni moratorij na daljnje unapređivanje sustava moćnijih nego što je GPT-4.'
-                            ],
-                            img:'1.jpg'
-                        }
-                    ]
+        data() {
+            return {
+                articles: [],
             }
-        }
+        },
+        created() {
+            this.fetchArticles();
+        },
+  
+        methods: {
+            async fetchArticles() {
+                try {
+                    const query=this.$route.query.q;
+                    const response = await fetch(`http://localhost:3000/article/searchByQuery?q=${query}`);
+                    const data = await response.json();
+                    if(response.status == 204){
+                        console.log("nema article");
+                    }
+                    this.articles = data;
+                    let nothingToShow2 = document.getElementsByClassName("nothingToShow")[0]
+                    nothingToShow2.style.display ="none";
+                    /* window.location.reload(); */
+                } catch (error) {
+                    console.error(error);
+                    let nothingToShow = document.getElementsByClassName("nothingToShow")[0]
+                    nothingToShow.style.display ="block";
+                    this.error = "Error retrieving articles";
+          
+                }
+        
+                // Scroll to the top of the page
+            window.scrollTo({ top: 0, behavior: "smooth" });
+            },
+     
+        
+            getImageUrl(img) {
+                if (!img) {
+                    return "http://localhost:3000/images/slika.png";
+                } else {
+                    return `http://localhost:3000/images/${img}`;
+                }
+            },
+        },
     }
 </script>
     

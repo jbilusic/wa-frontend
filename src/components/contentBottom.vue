@@ -1,18 +1,21 @@
 <template>   
   <div id="secondaryArticles">
-    <router-link v-for="(content, index) in article" :key="index" :to="{ path: content.path }">
+    <router-link v-for="(content, index) in articles" :key="index" :to="`/article/${content._id}`">
       <article class="articles">
         <div class="contentContainer2"> 
           <div class="imgSide">
             <div class="imgContainer">
               <img :src="getImageUrl(content.img)">
-              <!--  <img :src="'/src/assets/imgs/' + content.img" alt="Article image"> -->
+            <!--  <img :src="'/src/assets/imgs/' + content.img" alt="Article image"> -->
             </div>
           </div>
-          <div class="textSide2">
-            <h3>{{ content.middleTitle }}</h3>
-            <a :href="content.path">Read More <span>>></span></a>
+          <div class="texSideContainer">
+            <div class="textSide2">
+              <h3>{{ content.title }}</h3>
+           
+            </div>
           </div>
+
         </div>
       </article>
 
@@ -35,6 +38,7 @@
         },
 
         async created() {
+
           try {
             const response = await fetch(
               `http://localhost:3000/article/latestArticles?start=${this.num}`
@@ -48,6 +52,7 @@
             console.error(error);
             this.error = "Error retrieving articles";
           }
+          
         },
         methods: {
           getImageUrl(img) {

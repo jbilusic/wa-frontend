@@ -1,7 +1,7 @@
 <template>   
 <router-link :to="`/article/${mainArticle[0]._id}`">
         <article v-for="(content, index) in mainArticle" :key="index" id="firstArticle">
-            <div class="articleTitle"></div>
+
             <div class="contentContainer"> 
                 <div class="imgSide">
                     <div class="imgContainer">

@@ -19,7 +19,7 @@ const router = createRouter({
      { path: '/login', component:Login},
      { path: '/register', component:Register},
      {path: '/articleMaker/:id',name: 'article',component: ArticleModifier,},
-     {path: '/search/:id',name: 'search',component: Search,}
+     {path: '/search',name: 'search',component: Search,}
   ],
   scrollBehavior() {
     document.getElementById('app').scrollIntoView({ behavior: 'smooth' });

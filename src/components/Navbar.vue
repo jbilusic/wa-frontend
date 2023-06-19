@@ -37,7 +37,7 @@
             </div>
           </div>
           <div class="search-container">
-            <input type="text" placeholder="Search..." v-model="search" />
+            <input type="text" placeholder="Search..." v-model="typedRoute" />
             <button @click="searchArticle" type="submit">
               <i class="fa fa-search"></i>
             </button>
@@ -50,36 +50,25 @@
   <script>
     export default {
       methods: {
-        async searchArticle() {
-          try {
-            const response = await fetch("http://localhost:3000/article/search", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({ search: this.search }),
-            });
-            const data = await response.json();
-            if (data.message) {
-            this.$router.push(`/search/${articleId}`);
-            } else {
-              window.alert('error');
-            }
-          } catch (error) {
-            console.error(error);
-          }
+        searchArticle() {    
+          const query = encodeURIComponent(this.typedRoute);
+          this.$router.push({
+            path: '/search',
+            query: { q: this.typedRoute },
+          });
+          
         },
-        
-
       },
       data() {
         return {
+          typedRoute: '',
           links: [
             { text: "Naslovna", url: "/" },
             { text: "Lifestyle", url: "#2" },
             { text: "Schi/Tech", url: "#3" },
             { text: "Sport", url: "#4" },
             { text: "Viral", url: "#5" },
+            { text: "Artikl kreator", url: "/articleMaker" },
           ],
           title: "TECHNEWS",
           search: "",
