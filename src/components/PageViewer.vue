@@ -7,7 +7,7 @@
                 <div class="container-top-left">
                     <div class="news-log">
                         <div class="weather-forecast">
-                            <h2 class="date">Subota,  3. Travanj</h2>
+                            <h2 class="date">{{ day }},  {{ date }}</h2>
                             <h2 class="time">{{ time }}</h2>
                             </div>
                         <h3>{{ leftTitle }}</h3>
@@ -22,12 +22,8 @@
                 <div class = "container-top-middle">
                     <MainContent />
                     <ContentBottom />
-                    <ContentBottom />
-                    <ContentBottom />
-              
-                   
-                    <div class="wallpaper-divider"></div>
-                    <button id="myButton">Učitaj još</button>
+                    <!-- <div class="wallpaper-divider"></div>
+                    <button id="myButton" @click="addArticles">Učitaj još</button> -->
                 </div>
                 <div class="rightEmpty"></div>
                 <div class="container-top-right">
@@ -63,53 +59,52 @@
 <script>
 import ContentBottom from './contentBottom.vue';
 import MainContent from './MainContent.vue';
-
-
- 
-
 let timeElement;
-
-  /*   updateTime(); // Call the function to set the initial time
-
-    setInterval(updateTime, 60000); // Update the time every minute
-        */
-    function updateTime() {
-    const now = new Date();
-
-    timeElement = now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
-    console.log(timeElement);
-    }
-
-
+const dayNames = ["Ponedjeljak", "Utorak", "Srijeda", "Cetvrtak", "Petak", "Subota", "Nedjelja" ];
+const monthNames = ["Sječanj", "Veljača", "Ožujak", "Travanj", "Svibanj", "Lipanj",
+  "Srpanj", "Kolovoz", "Rujan", "Listopad", "Studeni", "Prosinac"
+];
     export default{
+
         components:{
             ContentBottom,
             MainContent
         },
-    data() {
-        return {
-            vijesti: "VIJESTI",
-            leftTitle: "Najčitanije",
-            leftContent: [
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-                "Etiam vel augue non velit euismod laoreet.",
-                "Proin sodales sapien ac massa molestie imperdiet.",
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            ],
-            rightTitle: "Najnovije",
-            rightContent: [
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-                "Etiam vel augue non velit euismod laoreet.",
-                "Proin sodales sapien ac massa molestie imperdiet.",
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            ],
-            time: "12:30"
-        };
-    } /* ,
-    methods:{
-    Msg:function(){
-    return '$' + this.title
-    }} */,
+        created() {
+            this.updateTime(); // Call the function to set the initial time
+
+            setInterval(this.updateTime, 30000); // Update the time every half minute
+        },
+        methods: {
+            updateTime() {
+            const now = new Date();
+            this.day = dayNames[now.getDay()-1];
+            this.date= now.getUTCDate() + ". " + monthNames[(now.getUTCMonth())];
+            this.time = now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+            }
+        },
+        data() {
+            return {
+                vijesti: "VIJESTI",
+                leftTitle: "Najčitanije",
+                leftContent: [
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                    "Etiam vel augue non velit euismod laoreet.",
+                    "Proin sodales sapien ac massa molestie imperdiet.",
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                ],
+                rightTitle: "Najnovije",
+                rightContent: [
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                    "Etiam vel augue non velit euismod laoreet.",
+                    "Proin sodales sapien ac massa molestie imperdiet.",
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                ],
+                time: "12:30",
+                day:"Subota",
+                date:"4. Travanj"
+            };
+        },
     components: { ContentBottom, MainContent }
 }
 </script>

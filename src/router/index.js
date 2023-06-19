@@ -6,6 +6,7 @@ import Register from '../components/Register.vue'
 import ArticleMaker from '../components/ArticleMaker.vue'
 import Test from '../components/Test.vue'
 import ArticleModifier from '../components/ArticleModifier.vue'
+import Search from '../components/Search.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -17,7 +18,8 @@ const router = createRouter({
      { path: '/articleMaker', component:ArticleMaker},
      { path: '/login', component:Login},
      { path: '/register', component:Register},
-     {path: '/articleMaker/:id',name: 'article',component: ArticleModifier,}
+     {path: '/articleMaker/:id',name: 'article',component: ArticleModifier,},
+     {path: '/search/:id',name: 'search',component: Search,}
   ],
   scrollBehavior() {
     document.getElementById('app').scrollIntoView({ behavior: 'smooth' });

@@ -199,8 +199,8 @@ main a:hover{
   font-weight: 300;
 }
 #secondaryArticles{
-  display: flex;
-  justify-content: center ;
+  display: grid;
+  grid-template-columns: auto auto;
 
 }
 #secondaryArticles a{
@@ -210,15 +210,18 @@ main a:hover{
 
 .articles{
   display: flex;
-  background-color: #fff;
+  background-color: #f3f3f3;
   justify-content: center;
   min-height: 310px;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  min-width: 589px;
+
   width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 
 }
 .articles:hover{
-  background-color:#e2e2e2;;
+  background-color:#fff;
+  box-shadow:0px 3px 6px rgba(231, 29, 29, 0.16), 0px 3px 6px rgba(231, 29, 29, 0.23);
 }
 
 #firstArticle
@@ -227,15 +230,17 @@ main a:hover{
   justify-content: center;
   flex-direction: column;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-  margin: 20px 0px;
-  padding-bottom: 25px;
+  margin: 30px 0px;
+  padding: 20px 0px 50px 0px;
   width: 100%;
-  background-color: #fff;
+  min-width: 1190px;
+  background-color: #f3f3f3;
 }
 
 
 #firstArticle:hover{
-  background-color:#e2e2e2;
+  background-color:#fff;
+  box-shadow:0px 3px 6px rgba(231, 29, 29, 0.16), 0px 3px 6px rgba(231, 29, 29, 0.23);
 }
 
 
@@ -290,6 +295,7 @@ font-size: 36px;
   align-items: center;
   padding: 0px 30px 5px 30px;
   width: 70%;
+  min-height: 100vh;
 }
 .container-top-middle a{
   padding: 0px;
@@ -320,13 +326,13 @@ font-size: 36px;
 .ref{
 display: flex;
 justify-content: space-evenly;
-background-color: #f6f6f6;
+background-color: #e6e6e6;
 border-bottom: solid 1px #8d0505;
 margin-bottom: 10px;
 border-radius: 10px;
 }
 .ref:hover{
-  background-color: #dedddd;
+  background-color: #fff;
 }
 .news-log h3{
  background-color: #fff;
@@ -431,7 +437,7 @@ border-radius: 10px;
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   padding: 20px;
   text-align: center;
   margin-bottom: 10px;
@@ -439,7 +445,7 @@ border-radius: 10px;
 
 .date {
   color: #999;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   margin-bottom: 10px;
 }
 
@@ -459,7 +465,7 @@ border-radius: 10px;
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   padding: 4px;
   text-align: center;
   margin-bottom: 10px;
@@ -477,7 +483,7 @@ border-radius: 10px;
 }
 .social-icons a:hover{
   width: 50%;
-  background-color: #333;;
+  background-color: #333;
 }
 
 .social-icons i{
