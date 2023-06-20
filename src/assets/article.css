@@ -20,7 +20,7 @@ body{
 
 .wallpaper-divider {
   padding-top: 2%;
-  text-align:center;
+  text-align: center;
   /*box-shadow: 0 1em 1em -1em rgba(0, 0, 0, .65);*/
 
 }
@@ -104,7 +104,19 @@ hr{
   margin: 0;
   padding: 0;
 }
-
+.comments-section li {
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 3px;
+   /* border-bottom: 1px solid black; */
+}
+.comments-section li:hover {
+  box-shadow: rgba(231, 29, 29, 0.2) 0px 0px 0px 1px inset, rgba(231, 29, 29, 0.9) 0px 0px 0px 1px;
+}
+.comments-section li:nth-child(odd) {
+  background-color: rgb(230, 230, 230); 
+ 
+}
 .comments-section .comment {
   display: flex;
   margin-bottom: 2rem;
@@ -355,7 +367,7 @@ border-radius: 10px;
 .choose-holder:hover{
   background-color: #a00f0f;
 
-  }
+}
 
 
 

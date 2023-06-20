@@ -43,11 +43,11 @@
       return{
         comments:[],
         newComment: {
-        username: 'user1',
-        content: '',
-        likes: {
-          count: 0,
-          users: []
+          username: 'user1',
+          content: '',
+          likes: {
+            count: 0,
+            users: []
         },
         dislikes: {
           count: 0,
@@ -100,11 +100,13 @@
     async submitComment(event) {
     event.preventDefault();
     try {
+      const token = localStorage.getItem('token');
       const articleId = this.$route.params.id;
       const response = await fetch('http://localhost:3000/comments/add', {
-        method: 'POST',
+        method: 'POST',credentials: 'include',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + token
         },
         body: JSON.stringify({
           articleId,
@@ -112,7 +114,8 @@
         })
       });
       const data = await response.json();
-      const updatedResponse = await fetch(`http://localhost:3000/article/getById/${articleId}`);
+      if(response.ok){
+        const updatedResponse = await fetch(`http://localhost:3000/article/getById/${articleId}`);
       const updatedData = await updatedResponse.json();
       this.comments = updatedData.article.comments;
       let i = 0;
@@ -133,17 +136,27 @@
           i++;
         });
       });
+      }else{
+        alert("Niste prijaviti!")
+      }
 
+      
       this.newComment.content = '';
     } catch (error) {
+      alert("Niste prijaviti")
       console.error(error);
     }
     },
      async deleteComment(commentId) {
       try {
+        const token = localStorage.getItem('token');
         const articleId = this.$route.params.id;
         const response = await fetch(`http://localhost:3000/comments/delete/${articleId}/${commentId}`, {
-          method: 'DELETE'
+          method: 'DELETE',
+          headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + token
+          },
         });
 
         if (response.status === 200) {
@@ -182,16 +195,17 @@
     },
     async likeComment(comment) {
       try {
+        const token = localStorage.getItem('token');
         const articleId = this.$route.params.id;
         const response = await fetch(`http://localhost:3000/comments/like`, {
           method: 'PUT',
           headers: {
-          'Content-Type': 'application/json'
-        },
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + token
+          },
         body: JSON.stringify({
           articleId:articleId,
-          commentId: comment.id,
-          user: user
+          commentId: comment.id
         })
         });
 
@@ -203,6 +217,7 @@
           this.$nextTick(() => {
             let like = document.querySelectorAll('.like');
             let dislike = document.querySelectorAll('.dislike');
+            //NE BACA PRAVU BOJU TREBA IZ TOKENA IZVUC USERNAME NEKAKO!
             this.comments.forEach(element => {
               if(element.likes.users.includes(user)){
                   like[i].style.color = "#45a622";
@@ -218,6 +233,7 @@
             });
           });
         } else {
+          alert("Niste prijaviti!")
           console.log('Error liking comment');
         }
       } catch (error) {
@@ -228,16 +244,17 @@
 
     async dislikeComment(comment) {
        try {
+        const token = localStorage.getItem('token');
         const articleId = this.$route.params.id;
         const response = await fetch(`http://localhost:3000/comments/dislike`, {
           method: 'PUT',
           headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + token
         },
         body: JSON.stringify({
           articleId:articleId,
-          commentId: comment.id,
-          user: user
+          commentId: comment.id
         })
         });
 

@@ -27,7 +27,7 @@
                     <p style="margin-bottom: 24px;" v-for="(content1, index1) in article.content" :key="index1">{{ content1 }}</p>
                 </div>
                 <Comments />
-                <div class="line"> </div>
+                <div class="line"></div>
             </div>
         </div> 
     </article> 
@@ -79,10 +79,14 @@ import Comments from './Comments.vue';
   
         deleteArticle() {
             const articleId = this.$route.params.id;
+            const token = localStorage.getItem('token');
             console.log(articleId);
   
-        fetch(`http://localhost:3000/article/delete/${articleId}`, {
-            method: 'DELETE'
+        fetch(`http://localhost:3000/protectedArticle/delete/${articleId}`, {
+            method: 'DELETE',
+            headers: {
+            'Authorization': 'Bearer ' + token
+            },
         })
         .then(response => {
             if (response.ok) {
@@ -90,6 +94,7 @@ import Comments from './Comments.vue';
                 window.alert('Article deleted successfully');
                 this.$router.push(`/`);
             } else {
+                window.alert('Not an admin');
                 console.error('Failed to delete article');
             }
         })

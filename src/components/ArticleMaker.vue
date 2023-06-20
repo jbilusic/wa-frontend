@@ -55,6 +55,7 @@ export default {
 
     async setPost() {
       try {
+        const token = localStorage.getItem('token');
         const formData = new FormData();
         formData.append("username", this.postData.username);
         formData.append("title", this.postData.title);
@@ -62,14 +63,23 @@ export default {
           formData.append(`content[${index}]`, paragraph);
         });
         formData.append("img", this.postData.img);
-        const response = await fetch("http://localhost:3000/article/add", {
+        const response = await fetch("http://localhost:3000/protectedArticle/add", {
           method: "POST",
-          body: formData,
+          headers: {
+
+          'Authorization': 'Bearer ' + token
+        },
+          body: formData
+
         });
         const data = await response.json();
         console.log(data);
         window.alert('Article created successfully!');
+        if (response.status === 201) 
         this.$router.push(`/article/${data.id}`);
+        else{
+          alert("greska ")
+        }
 
       } catch (error) {
         console.error(error);

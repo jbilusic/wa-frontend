@@ -67,6 +67,7 @@
       async modifyPost() {
         try {
           const articleId = this.$route.params.id;
+          const token = localStorage.getItem('token');
           const formData = new FormData();
             formData.append("username", this.postData.username);
            if (this.postData.title)formData.append("title", this.postData.title);
@@ -76,25 +77,27 @@
             });
            } 
            formData.append("img", this.postData.img)
-           /*  if(this.article.img){
-            
-              formData.append("img", 0);
-            }else{
-              if (this.postData.img) formData.append("img", this.postData.img);
-            } */
+           
           console.log(formData);
-          const response = await fetch(`http://localhost:3000/article/modify/${articleId}`, {
+          const response = await fetch(`http://localhost:3000/protectedArticle/modify/${articleId}`, {
           method: 'PATCH',
+          headers: {
+          'Authorization': 'Bearer ' + token
+          },
           body: formData,
           });
           const data = await response.json();
-          if (data.message) {
+          if(response.ok){
+            if (data.message) {
             this.error = data.message;
             this.success = '';
             window.alert('Article updated successfully!');
             this.$router.push(`/article/${articleId}`);
-          } else {
-            this.success = 'Article updated successfully';
+            }
+          }
+           else {
+            window.alert('Article Not Updated!');
+            this.success = 'Article Not Updated';
             this.error = '';
           }
         } catch (error) {
@@ -138,7 +141,7 @@
       async created() {
          try {
          const articleId = this.$route.params.id;
-         if (articleId=== undefined) {
+         if (articleId === undefined) {
             return;
          }
          const response = await fetch(`http://localhost:3000/article/getById/${articleId}`);
