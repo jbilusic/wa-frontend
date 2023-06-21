@@ -4,13 +4,14 @@
     <article v-for="(content, index) in mainArticle" :key="index" id="firstArticle1">
         <div class="contentContainer3">
             <div class="containerOfContainer">
-                <div class="articleInfo2">
+                <div class="articleInfo2" v-if="isAdmin">
                     <!-- check on session if its admin, if yes show this div else hide it -->
                     <router-link :to="`/articleMaker/${$route.params.id}`">
                         <img src="../assets/imgs/edit.png">
                     </router-link>
                     <img src="../assets/imgs/delete.png" @click="deleteArticle"> 
                 </div>
+
                 <div class="articleTitle2">
                     <h3>{{ article.title  }}</h3>
                 </div>
@@ -44,6 +45,8 @@ import Comments from './Comments.vue';
         return {
             img: '../assets/imgs/slika.png',
             article: {},
+            isAdmin: false,
+            user:'',
             error: "",
             mainArticle:[{
                 middleTitle:'Upozorenje vrhunskog fizičara: AI-u se ne smije dati tri stvari. Dali smo mu sve tri ', 
@@ -76,6 +79,24 @@ import Comments from './Comments.vue';
             // Format the date according to the options
             return date.toLocaleDateString('hr-HR', options);
         },
+        async getUsername() {
+        try {
+            const token = localStorage.getItem('token');
+            const response = await fetch(`http://localhost:3000/`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + token
+                },
+         });
+         const user = await response.json();
+         this.isAdmin = user.response.admin
+         this.user = user.response.username;
+        } catch (error) {
+            console.error(error);
+            this.error = "Error getting token username";
+        }
+        },
   
         deleteArticle() {
             const articleId = this.$route.params.id;
@@ -88,33 +109,38 @@ import Comments from './Comments.vue';
             'Authorization': 'Bearer ' + token
             },
         })
-        .then(response => {
-            if (response.ok) {
-                console.log('Article deleted successfully');
-                window.alert('Article deleted successfully');
-                this.$router.push(`/`);
-            } else {
-                window.alert('Not an admin');
-                console.error('Failed to delete article');
-            }
-        })
-        .catch(error => {
-            console.error('Error occurred during deletion', error);
-        });
+            .then(response => {
+                if (response.ok) {
+                    console.log('Article deleted successfully');
+                    window.alert('Article deleted successfully');
+                    this.$router.push(`/`);
+                } else {
+                    window.alert('Not an admin');
+                    console.error('Failed to delete article');
+                }
+            })
+            .catch(error => {
+                console.error('Error occurred during deletion', error);
+            });
       }
     },
     async created() {
         try {
-        const articleId = this.$route.params.id;
-        const response = await fetch(`http://localhost:3000/article/getById/${articleId}`);
-        const data = await response.json();
+            const articleId = this.$route.params.id;
+            const response = await fetch(`http://localhost:3000/article/getById/${articleId}`);
+            const data = await response.json();
 
-        this.article = data.article;
-        this.img = `http://localhost:3000/images/${this.article.img}`;
+            this.article = data.article;
+            this.img = `http://localhost:3000/images/${this.article.img}`;
         } catch (error) {
-         console.error(error);
-         this.error = "Error retrieving article";
-         }
-     },
- }
+            console.error(error);
+            this.error = "Error retrieving article";
+        }
+        this.getUsername();
+    },
+    beforeRouteUpdate(to, from, next) {
+     this.getUsername();
+     next();
+    },
+}
 </script>

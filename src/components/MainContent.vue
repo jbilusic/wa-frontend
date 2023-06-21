@@ -52,7 +52,7 @@
                     return `http://localhost:3000/images/${img}`;
                 }
             }
-         }
+        }
     }
 </script>
     

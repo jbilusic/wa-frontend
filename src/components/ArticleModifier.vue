@@ -50,7 +50,7 @@
     computed: {
           imageUrl() {
             const articleId = this.$route.params.id;
-            if (articleId=== undefined) {
+            if (articleId === undefined) {
                 return;
             }else{
               return `http://localhost:3000/images/${this.postData.img}`;

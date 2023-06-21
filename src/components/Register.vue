@@ -24,7 +24,6 @@
                             <input type="password" id="confirm-password" name="confirm-password" placeholder="Potvrdi svoju lozinku" required v-model="newReg.rePassword">
                         </div>
                         <input type="submit" value="Registriraj se" @click="register">
-                        
                     </form>
                
                     <h2></h2>
@@ -36,14 +35,11 @@
                     
                 </div>
             </div>
-       </div> 
-
-
+       </div>
 </template>
 
 <script>
-
-        import "../assets/login.css";
+    import "../assets/login.css";
 
     export default{
         components:{},
@@ -68,29 +64,28 @@
             if (response.ok) {
             const data = await response.json();
                 this.$router.push(`/login`);
-            }else {
+            } else{
                 console.log('Bad input');
-                }
-            } catch (error) {
-                console.error(error);
             }
+        } catch (error) {
+                console.error(error);
+        }
             },
-
-    },
+        },
         
         data(){
             return{
-                    mainArticle:
-                    {
-                            img:'1.jpg',
-                            title:"test"
-                    },
-                    newReg: {
-                        username: '',
-                        email: '',
-                        rePassword: '',
-                        password: '',
-                        },
+                mainArticle:
+                {
+                        img:'1.jpg',
+                        title:"test"
+                },
+                newReg: {
+                    username: '',
+                    email: '',
+                    rePassword: '',
+                    password: '',
+                },
                     
             }
         }

@@ -19,8 +19,7 @@
                     </div>
                 </div>
             </div>
-       </div> 
-
+       </div>
 </template>
 
 <script>
@@ -50,7 +49,6 @@ export default{
             const token = data.token; // Assuming the token is received as part of the response data
             localStorage.setItem('token', token);
             console.log("Token stored in localStorage:", token);
-        
             this.$router.push(`/`);
         } else {
             // Handle the normal response
@@ -59,8 +57,9 @@ export default{
     } catch (error) {
         console.error(error);
     }
-},
-        
+        },
+
+    },
     data(){
         return{
             mainArticle:{
@@ -70,12 +69,8 @@ export default{
             newLogin: {
                 username: '',
                 password: '',
-            },
-                    
+            },     
         };
-    },
     },
 };
 </script>
-
-

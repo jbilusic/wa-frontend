@@ -7,7 +7,8 @@
           <img src="https://via.placeholder.com/50" alt="Avatar" />
           <div class="comment-body">
             <div class="comment-titlePart"><h3 class="comment-author">{{ comment.username }}</h3>
-              <div class="comment-deletePart" @click="deleteComment(comment.id)"><span>X</span></div>
+              <div class="comment-deletePart" @click="deleteComment(comment.id)" v-if="isAdmin"><span>X</span></div>
+              <div class="comment-deletePart"  v-else></div>
             </div>
 
             <p class="comment-text">{{ comment.content }}</p>
@@ -37,11 +38,12 @@
 </template>
 
 <script>
-  let user= "user2";
   export default{
     data()  {
       return{
         comments:[],
+        isAdmin: false,
+        user:'',
         newComment: {
           username: 'user1',
           content: '',
@@ -62,17 +64,37 @@
       const response = await fetch(`http://localhost:3000/article/getById/${articleId}`);
       const data = await response.json();
       this.comments = data.article.comments;
-      let i = 0;
+      this.getUsername()
+    } catch (error) {
+      console.error(error);
+      this.error = "Error retrieving article";
+    }
+  },
+  methods: {
+    async getUsername() {
+       try {
+         const token = localStorage.getItem('token');
+         const response = await fetch(`http://localhost:3000/`, {
+           method: 'GET',
+           headers: {
+             'Content-Type': 'application/json',
+             'Authorization': 'Bearer ' + token
+           },
+         });
+         const user = await response.json();
+         this.isAdmin = user.response.admin
+         this.user = user.response.username;
+         let i = 0;
       this.$nextTick(() => {
         let like = document.querySelectorAll('.like');
         let dislike = document.querySelectorAll('.dislike');
         this.comments.forEach(element => {
-          if(element.likes.users.includes(user)){
+          if(element.likes.users.includes(this.user)){
                   like[i].style.color = "#45a622";
               }else{
                 like[i].style.color = "gray";
               }
-              if(element.dislikes.users.includes(user)){
+              if(element.dislikes.users.includes(this.user)){
                 dislike[i].style.color = "#a62222";
               }else{
                 dislike[i].style.color = "gray";
@@ -80,13 +102,11 @@
           i++;
         });
       });
-
-    } catch (error) {
-      console.error(error);
-      this.error = "Error retrieving article";
-    }
-  },
-  methods: {
+       } catch (error) {
+         console.error(error);
+         this.error = "Error getting token username";
+       }
+     },
     formatDate(timestamp) {
       const date = new Date(timestamp);
       return date.toLocaleDateString('en-US', {
@@ -137,13 +157,13 @@
         });
       });
       }else{
-        alert("Niste prijaviti!")
+        alert("Niste prijavljeni!")
       }
 
       
       this.newComment.content = '';
     } catch (error) {
-      alert("Niste prijaviti")
+      alert("Niste prijavljeni")
       console.error(error);
     }
     },
@@ -217,14 +237,13 @@
           this.$nextTick(() => {
             let like = document.querySelectorAll('.like');
             let dislike = document.querySelectorAll('.dislike');
-            //NE BACA PRAVU BOJU TREBA IZ TOKENA IZVUC USERNAME NEKAKO!
             this.comments.forEach(element => {
-              if(element.likes.users.includes(user)){
+              if(element.likes.users.includes(this.user)){
                   like[i].style.color = "#45a622";
               }else{
                 like[i].style.color = "gray";
               }
-              if(element.dislikes.users.includes(user)){
+              if(element.dislikes.users.includes(this.user)){
                 dislike[i].style.color = "#a62222";
               }else{
                 dislike[i].style.color = "gray";
@@ -233,7 +252,7 @@
             });
           });
         } else {
-          alert("Niste prijaviti!")
+          alert("Niste prijavljeni!")
           console.log('Error liking comment');
         }
       } catch (error) {
@@ -267,12 +286,12 @@
             let like = document.querySelectorAll('.like');
             let dislike = document.querySelectorAll('.dislike');
             this.comments.forEach(element => {
-              if(element.likes.users.includes(user)){
+              if(element.likes.users.includes(this.user)){
                   like[i].style.color = "#45a622";
               }else{
                 like[i].style.color = "gray";
               }
-              if(element.dislikes.users.includes(user)){
+              if(element.dislikes.users.includes(this.user)){
                 dislike[i].style.color = "#a62222";
               }else{
                 dislike[i].style.color = "gray";
@@ -287,9 +306,11 @@
         console.error(error);
         // Handle error
       } 
-    }
-
-
+    },
+    beforeRouteUpdate(to, from, next) {
+     this.getUsername();
+     next();
+   },
   }
 };
 </script>
