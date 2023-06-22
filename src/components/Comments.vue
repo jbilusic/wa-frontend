@@ -72,41 +72,41 @@
   },
   methods: {
     async getUsername() {
-       try {
-         const token = localStorage.getItem('token');
-         const response = await fetch(`http://localhost:3000/`, {
-           method: 'GET',
-           headers: {
-             'Content-Type': 'application/json',
-             'Authorization': 'Bearer ' + token
-           },
-         });
-         const user = await response.json();
-         this.isAdmin = user.response.admin
-         this.user = user.response.username;
-         let i = 0;
-      this.$nextTick(() => {
-        let like = document.querySelectorAll('.like');
-        let dislike = document.querySelectorAll('.dislike');
-        this.comments.forEach(element => {
-          if(element.likes.users.includes(this.user)){
-                  like[i].style.color = "#45a622";
-              }else{
-                like[i].style.color = "gray";
-              }
-              if(element.dislikes.users.includes(this.user)){
-                dislike[i].style.color = "#a62222";
-              }else{
-                dislike[i].style.color = "gray";
-              }
-          i++;
+      try {
+        const token = localStorage.getItem('token');
+        const response = await fetch(`http://localhost:3000/`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token
+          },
         });
-      });
-       } catch (error) {
-         console.error(error);
-         this.error = "Error getting token username";
-       }
-     },
+        const user = await response.json();
+        this.isAdmin = user.response.admin
+        this.user = user.response.username;
+        let i = 0;
+        this.$nextTick(() => {
+          let like = document.querySelectorAll('.like');
+          let dislike = document.querySelectorAll('.dislike');
+          this.comments.forEach(element => {
+            if(element.likes.users.includes(this.user)){
+                    like[i].style.color = "#45a622";
+            }else{
+              like[i].style.color = "gray";
+            }
+            if(element.dislikes.users.includes(this.user)){
+              dislike[i].style.color = "#a62222";
+            }else{
+              dislike[i].style.color = "gray";
+            }
+          i++;
+            });
+        });
+      } catch (error) {
+        console.error(error);
+        this.error = "Error getting token username";
+      }
+    },
     formatDate(timestamp) {
       const date = new Date(timestamp);
       return date.toLocaleDateString('en-US', {
@@ -115,7 +115,7 @@
       day: 'numeric',
       hour: 'numeric',
       minute: 'numeric'
-    });
+      });
     },
     async submitComment(event) {
     event.preventDefault();
@@ -174,8 +174,8 @@
         const response = await fetch(`http://localhost:3000/comments/delete/${articleId}/${commentId}`, {
           method: 'DELETE',
           headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + token
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token
           },
         });
 
@@ -202,15 +202,12 @@
             });
           });
         } else if (response.status === 404) {
-          
           console.log('Comment not found');
         } else {
-          
           console.log('Error deleting comment');
         }
       } catch (error) {
         console.error(error);
-        
       }
     },
     async likeComment(comment) {
@@ -220,8 +217,8 @@
         const response = await fetch(`http://localhost:3000/comments/like`, {
           method: 'PUT',
           headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + token
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token
           },
         body: JSON.stringify({
           articleId:articleId,
@@ -229,32 +226,30 @@
         })
         });
 
-        if (response.status === 200) {
-          const updatedResponse = await fetch(`http://localhost:3000/article/getById/${articleId}`);
-          const updatedData = await updatedResponse.json();
-          this.comments = updatedData.article.comments;
-          let i = 0;
-          this.$nextTick(() => {
-            let like = document.querySelectorAll('.like');
-            let dislike = document.querySelectorAll('.dislike');
-            this.comments.forEach(element => {
-              if(element.likes.users.includes(this.user)){
-                  like[i].style.color = "#45a622";
-              }else{
-                like[i].style.color = "gray";
-              }
-              if(element.dislikes.users.includes(this.user)){
-                dislike[i].style.color = "#a62222";
-              }else{
-                dislike[i].style.color = "gray";
-              }
-              i++;
-            });
+      if (response.status === 200) {
+        const updatedResponse = await fetch(`http://localhost:3000/article/getById/${articleId}`);
+        const updatedData = await updatedResponse.json();
+        this.comments = updatedData.article.comments;
+        let i = 0;
+          let like = document.querySelectorAll('.like');
+          let dislike = document.querySelectorAll('.dislike');
+          this.comments.forEach(element => {
+            if(element.likes.users.includes(this.user)){
+                like[i].style.color = "#45a622";
+            }else{
+              like[i].style.color = "gray";
+            }
+            if(element.dislikes.users.includes(this.user)){
+              dislike[i].style.color = "#a62222";
+            }else{
+              dislike[i].style.color = "gray";
+            }
+            i++;
           });
-        } else {
-          alert("Niste prijavljeni!")
-          console.log('Error liking comment');
-        }
+      } else {
+        alert("Niste prijavljeni!")
+        console.log('Error liking comment');
+      }
       } catch (error) {
         console.error(error);
         // Handle error
@@ -268,13 +263,13 @@
         const response = await fetch(`http://localhost:3000/comments/dislike`, {
           method: 'PUT',
           headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + token
-        },
-        body: JSON.stringify({
-          articleId:articleId,
-          commentId: comment.id
-        })
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token
+          },
+          body: JSON.stringify({
+            articleId:articleId,
+            commentId: comment.id
+          })
         });
 
         if (response.status === 200) {
@@ -287,13 +282,13 @@
             let dislike = document.querySelectorAll('.dislike');
             this.comments.forEach(element => {
               if(element.likes.users.includes(this.user)){
-                  like[i].style.color = "#45a622";
-              }else{
+                like[i].style.color = "#45a622";
+              } else {
                 like[i].style.color = "gray";
               }
               if(element.dislikes.users.includes(this.user)){
                 dislike[i].style.color = "#a62222";
-              }else{
+              } else {
                 dislike[i].style.color = "gray";
               }
               i++;

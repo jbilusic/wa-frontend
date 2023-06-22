@@ -66,7 +66,7 @@ hr{
   
 }
 
-.containerOfContainer{
+.containerOfContainer {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -220,13 +220,12 @@ hr{
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 10px;
-
 }
 .comments-section button[type="submit"]:hover {
   background-color: #a00f0f;
 }
 
-.commentDiv{
+.commentDiv {
   width: 100%;
   display: flex;
   justify-content: flex-end;
@@ -238,7 +237,7 @@ hr{
   justify-content: space-between;
   margin-top: 10px;
 }
-.comment-actions2{
+.comment-actions2 {
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
@@ -280,15 +279,35 @@ hr{
 
 
 
-.articleTitle2{
+.articleTitle2 {
   border-bottom: 1px solid gray;
   margin-bottom: 20px;
 }
-.articleInfo{
-  width: 80%;
 
+.articleAndBookmark {
+  width: 80%;
+  display: flex;
 }
-.articleInfo p{
+
+.articleInfo {
+  width: 80%;
+}
+
+.bookmark {
+  width: 20%;
+  display: flex;
+  justify-content: flex-end;
+}
+.bookmark img {
+  width: 20px;
+  height:  45px;
+}
+#imgBookmark {
+  width: 20px;
+  height:  45px;
+}
+
+.articleInfo p {
   font-size: 12px;
   margin: 5px 0px 24px 0;
   
@@ -299,7 +318,6 @@ hr{
   justify-content: space-evenly;
  
   padding: 30px;
-
 }
 .articleInfo2 img{
   width: 50px;
@@ -343,7 +361,6 @@ hr{
   justify-content: center;
 }
 .imgContainer2 img{
- 
   border-radius: 5px;
 }
 .imgContainer2 :hover{
@@ -366,7 +383,6 @@ border-radius: 10px;
 }
 .choose-holder:hover{
   background-color: #a00f0f;
-
 }
 
 
@@ -408,7 +424,6 @@ textarea{
   font-family: 'Georgia', sans-serif;
   border-bottom: 1px solid gray;
   resize: vertical;
-
 }
 .line{
   border-bottom: 1px solid gray;

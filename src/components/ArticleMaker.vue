@@ -66,17 +66,15 @@ export default {
         const response = await fetch("http://localhost:3000/protectedArticle/add", {
           method: "POST",
           headers: {
-
-          'Authorization': 'Bearer ' + token
+            'Authorization': 'Bearer ' + token
           },
           body: formData
-
         });
         const data = await response.json();
         console.log(data);
         window.alert('Article created successfully!');
         if (response.status === 201) 
-        this.$router.push(`/article/${data.id}`);
+          this.$router.push(`/article/${data.id}`);
         else{
           alert("greska ")
         }

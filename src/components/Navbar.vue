@@ -32,6 +32,13 @@
               </li>
             </ul>
           </nav>
+          <nav v-else>
+            <ul>
+              <li v-for="(link, index) in links2" :key="index">
+                <a :href="link.url">{{ link.text }}</a>
+              </li>
+            </ul>
+          </nav>
         </div>
           <div class="top-head">
 
@@ -39,17 +46,26 @@
               <div class="loginIcon" v-if="user !== 'guest'">
                 <router-link to="/login">
 
-                  <img @click="logout" src="../assets/imgs/icon.png" />
+                  <img @click="logout" src="../assets/imgs/power.png" />
                 </router-link>
               </div>
 
               <div id="namePlace">
                 <span>{{ user }}</span>
               </div>
+
+              <div id="namePlace">
+                <span>{{ user }}</span>
+              </div>
              
-              <div class="loginIcon">
+              <div class="loginIcon" v-if="user == 'guest'">
             
                 <router-link to="/login">
+                  <img src="../assets/imgs/icon.png" />
+                </router-link>
+              </div>
+              <div class="loginIcon" v-else>
+                <router-link to="/profile">
                   <img src="../assets/imgs/icon.png" />
                 </router-link>
               </div>
@@ -128,7 +144,7 @@
             },
           });
           const user = await response.json();
-          this.isAdmin = user.response.admin=== true
+          this.isAdmin = user.response.admin === true
           this.user = user.response.username;
           this.dataLoaded = true; // Mark data as loaded
         } catch (error) {

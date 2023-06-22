@@ -5,7 +5,6 @@
         <div class="contentContainer3">
             <div class="containerOfContainer">
                 <div class="articleInfo2" v-if="isAdmin">
-                    <!-- check on session if its admin, if yes show this div else hide it -->
                     <router-link :to="`/articleMaker/${$route.params.id}`">
                         <img src="../assets/imgs/edit.png">
                     </router-link>
@@ -15,9 +14,15 @@
                 <div class="articleTitle2">
                     <h3>{{ article.title  }}</h3>
                 </div>
-                <div class="articleInfo">
-                    <h5>Technews, {{ article.author }}</h5>
-                    <p>{{ formatDate(article.postDate) }}</p>
+                <div class="articleAndBookmark">
+                    <div class="articleInfo">
+                        <h5>Technews, {{ article.author }}</h5>
+                        <p>{{ formatDate(article.postDate) }}</p>
+                    </div>
+                    
+                    <div class="bookmark">
+                        <img id="imgBookmark" src="../assets/imgs/crven.png" @click="addBookmark">
+                    </div>
                 </div>
                 <div class="imgSide2">
                     <div class="imgContainer2">
@@ -59,7 +64,8 @@ import Comments from './Comments.vue';
 
                 ],
                 img:'1.jpg',
-                title:"test"
+                title:"test",
+                bookmark:false
             }]
         }
     },
@@ -79,23 +85,77 @@ import Comments from './Comments.vue';
             // Format the date according to the options
             return date.toLocaleDateString('hr-HR', options);
         },
-        async getUsername() {
+        async getProfileData() {
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`http://localhost:3000/`, {
+            const response = await fetch(`http://localhost:3000/users/profile`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': 'Bearer ' + token
                 },
-         });
-         const user = await response.json();
-         this.isAdmin = user.response.admin
-         this.user = user.response.username;
+            });
+            const user = await response.json();
+        
+            this.$nextTick(() => {
+            this.bookmarks=  user.response.bookmarks;
+            const articleId = this.$route.params.id;
+            if(this.bookmarks.includes(articleId)){
+                this.bookmark= true;
+                document.getElementById("imgBookmark").src="/src/assets/imgs/zelen.png";
+            }else{
+                this.bookmark= false;
+                document.getElementById("imgBookmark").src="/src/assets/imgs/crven.png";
+            }
+        
+            this.user =  user.response.username;
+            });
+            
         } catch (error) {
             console.error(error);
             this.error = "Error getting token username";
         }
+        },
+
+        async addBookmark() {
+            try {
+                const token = localStorage.getItem('token');
+                const articleId = this.$route.params.id;
+                if(this.bookmark){
+                this.bookmark= false;
+                document.getElementById("imgBookmark").src="/src/assets/imgs/crven.png";
+                try { 
+                    const response = await fetch(`http://localhost:3000/users/bookmark/${articleId}`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + token
+                    }
+                    });
+                    const data = await response.json();
+                } catch (error) {
+                    console.error(error)
+                }
+                }else{
+                    this.bookmark= true;
+                    document.getElementById("imgBookmark").src="/src/assets/imgs/zelen.png";
+                try { 
+                    const response = await fetch(`http://localhost:3000/users/bookmark/${articleId}`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + token
+                    }
+                    });
+                    const data = await response.json();
+                } catch (error) {
+                    console.error(error)
+                }
+                }
+            } catch (error) {
+                console.error(error);
+                this.error = "Error retrieving article";
+            }
         },
   
         deleteArticle() {
@@ -106,24 +166,25 @@ import Comments from './Comments.vue';
         fetch(`http://localhost:3000/protectedArticle/delete/${articleId}`, {
             method: 'DELETE',
             headers: {
-            'Authorization': 'Bearer ' + token
+                'Authorization': 'Bearer ' + token
             },
         })
-            .then(response => {
-                if (response.ok) {
-                    console.log('Article deleted successfully');
-                    window.alert('Article deleted successfully');
-                    this.$router.push(`/`);
-                } else {
-                    window.alert('Not an admin');
-                    console.error('Failed to delete article');
-                }
-            })
-            .catch(error => {
-                console.error('Error occurred during deletion', error);
-            });
-      }
-    },
+        .then(response => {
+            if (response.ok) {
+                console.log('Article deleted successfully');
+                window.alert('Article deleted successfully');
+                this.$router.push(`/`);
+            } else {
+                window.alert('Not an admin');
+                console.error('Failed to delete article');
+            }
+        })
+        .catch(error => {
+            console.error('Error occurred during deletion', error);
+        });
+    }
+},
+
     async created() {
         try {
             const articleId = this.$route.params.id;
@@ -136,11 +197,7 @@ import Comments from './Comments.vue';
             console.error(error);
             this.error = "Error retrieving article";
         }
-        this.getUsername();
-    },
-    beforeRouteUpdate(to, from, next) {
-     this.getUsername();
-     next();
+        this.getProfileData();
     },
 }
 </script>
