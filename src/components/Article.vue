@@ -70,6 +70,25 @@ import Comments from './Comments.vue';
         }
     },
     methods: {
+    async getUsername() {
+      try {
+        const token = localStorage.getItem('token');
+        const response = await fetch(`http://localhost:3000/`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token
+          },
+        });
+        const user = await response.json();
+        this.isAdmin = user.response.admin
+  
+        this.user = user.response.username;
+      } catch (error) {
+        console.error(error);
+        this.error = "Error getting token username";
+      }
+    },
         formatDate(timestamp) {
             const date = new Date(timestamp);
   
@@ -188,9 +207,9 @@ import Comments from './Comments.vue';
     async created() {
         try {
             const articleId = this.$route.params.id;
-            const response = await fetch(`http://localhost:3000/article/getById/${articleId}`);
+            const response = await fetch(`http://localhost:3000/article/data/${articleId}`);
             const data = await response.json();
-
+            this.getUsername()
             this.article = data.article;
             this.img = `http://localhost:3000/images/${this.article.img}`;
         } catch (error) {

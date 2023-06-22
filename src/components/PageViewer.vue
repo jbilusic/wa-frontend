@@ -10,7 +10,7 @@
                             <h2 class="date">{{ day }},  {{ date }}</h2>
                             <h2 class="time">{{ time }}</h2>
                             </div>
-                        <h3>{{ leftTitle }}</h3>
+                        <h3 style="font-size: 14px;">{{ leftTitle }}</h3>
                         <div class="news-item" v-for="(content, index) in leftContent" :key="index">
                             <div class="ref">
                             <span class="topListNum">{{ index+=1 }}</span>
@@ -31,16 +31,16 @@
                         <div class = "social-icons">
                             <ul>
                                 <li>
-                                    <a href= "#"><i class = "fab fa-facebook fa-2x"></i></a>
-                                    <a href= "#"><i class = "fab fa-twitter fa-2x"></i></a>
+                                    <a href= "#"><i class = "fab fa-facebook fa-1x"></i></a>
+                                    <a href= "#"><i class = "fab fa-twitter fa-1x"></i></a>
                                 </li>
                                 <li>
-                                    <a href= "#"><i class = "fab fa-instagram fa-2x"></i></a>
-                                    <a href= "#"><i class = "fab fa-youtube fa-2x"></i></a>
+                                    <a href= "#"><i class = "fab fa-instagram fa-1x"></i></a>
+                                    <a href= "#"><i class = "fab fa-youtube fa-1x"></i></a>
                                 </li>
                             </ul>
                         </div>
-                            <h3>{{ rightTitle }}</h3>
+                            <h3 style="font-size: 14px;">{{ rightTitle }}</h3>
                             <div class="news-item"  v-for="(content, index) in rightContent" :key="index">
                             <div class="ref">
                                 <span class="topListNum">{{ index+=1 }}</span>
@@ -90,15 +90,15 @@ const monthNames = ["Sječanj", "Veljača", "Ožujak", "Travanj", "Svibanj", "Li
                 leftContent: [
                     "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
                     "Etiam vel augue non velit euismod laoreet.",
-                    "Proin sodales sapien ac massa molestie imperdiet.",
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                    "Proin sodales sapien ac massa molestie imperdiet."
+                    
                 ],
                 rightTitle: "Najnovije",
                 rightContent: [
                     "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
                     "Etiam vel augue non velit euismod laoreet.",
-                    "Proin sodales sapien ac massa molestie imperdiet.",
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                    "Proin sodales sapien ac massa molestie imperdiet."
+                
                 ],
                 time: "12:30",
                 day:"Subota",

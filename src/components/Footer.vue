@@ -2,7 +2,7 @@
     <footer>
            <div class = "footer-container">
                <div class = "footer-left">
-                   <h2>TECHNEWS</h2>
+                   <h2>WEBNEWS</h2>
                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur molestias aut blanditiis totam quia enim, autem tenetur cum facere, fugit beatae at voluptas ipsum perferendis!</p>
                </div>
 
@@ -16,7 +16,7 @@
                    </div>
                </div>
            </div>
-           <p>Copyright &copy; 2023 All rights reserved | Josephina</p>
+           <p>Copyright &copy; 2023 All rights reserved | JBilusic</p>
        </footer>
 </template>
 

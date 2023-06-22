@@ -144,7 +144,7 @@
          if (articleId === undefined) {
             return;
          }
-         const response = await fetch(`http://localhost:3000/article/getById/${articleId}`);
+         const response = await fetch(`http://localhost:3000/article/data/${articleId}`);
          const data = await response.json();
          this.article = data.article;
          this.postData.title = data.article.title;

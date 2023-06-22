@@ -52,10 +52,11 @@ header{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0 auto;
+
   background: #252525;
   color: #fff;
-  padding: 20px 30px;
+  
+  padding: 20px 0px;
 }
 
 .top-head .fas{
@@ -72,6 +73,7 @@ header{
 .nav-bar{
   background: #333;
   height: 0;
+  
   overflow: hidden;
 }
 
@@ -194,7 +196,7 @@ main a:hover{
 /* main container left */
 
 .main-container-left {
-
+width: 100%;
 }
 
 
@@ -214,8 +216,9 @@ main a:hover{
 #secondaryArticles{
   display: grid;
   grid-template-columns: auto auto;
+  width: 99%;
 }
-#secondaryArticles a{
+#secondaryArticles > a{
   margin: 5px;
 }
 
@@ -224,9 +227,7 @@ main a:hover{
   background-color: #f3f3f3;
   justify-content: center;
   align-items: center;
-  width: 589px;
-  height: 400px;
-  padding-top: 5px;
+  padding: 2px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 .articles:hover{
@@ -239,8 +240,9 @@ main a:hover{
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   width: 100%;
-  height: 400px;
+  min-height: 310px;
 }
 
 .imgSide{
@@ -256,8 +258,8 @@ main a:hover{
   justify-content: center;
 }
 #secondaryArticles img{
-  max-width: 583px;
-  max-height: 306px;
+
+  max-height: 240px;
   border-radius: 5px;
 
 }
@@ -274,7 +276,8 @@ main a:hover{
   text-align: center;
 }
 .texSideContainer{
-  height: 100%;
+  
+  height: 70px;
   width: 100%;
 
   text-align: center;
@@ -290,8 +293,8 @@ main a:hover{
   margin: 20px 0px 10px 0px;
   padding: 10px;
   width: 100%;
-  min-width: 1190px;
-  background-color: #f3f3f3;
+  
+   background-color: #f3f3f3; 
 }
 
 
@@ -306,6 +309,7 @@ main a:hover{
   display: flex;
   justify-content: center;
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0.7), transparent);
+
 }
 .contentContainer{
   display: flex;
@@ -345,12 +349,14 @@ main a:hover{
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  padding: 0px 30px 5px 30px;
+  padding: 0px 10px 5px 10px;
   width: 70%;
   min-height: 100vh;
+ 
 }
 .container-top-middle a{
   padding: 0px;
+  
 }
 .container-top-middle:hover{
 /*   color:#e71d1d; */
@@ -359,7 +365,7 @@ main a:hover{
   margin-top: 50px;
   display: flex;
   justify-content: center;
-  margin-left: 20px;
+  margin-left: 15px;
   width: 15%;
   height: auto;
   position: fixed;
@@ -373,12 +379,16 @@ main a:hover{
 .rightEmpty {
   width: 18%;
 }
+.news-item{
+  font-size: 14px;
+
+}
 .ref{
   display: flex;
   justify-content: space-evenly;
   background-color: #e6e6e6;
   border-bottom: solid 1px #8d0505;
-  margin-bottom: 10px;
+  margin-bottom: 3px;
   border-radius: 10px;
 }
 .ref:hover{
@@ -386,15 +396,15 @@ main a:hover{
 }
 .news-log h3{
   background-color: #fff;
-  margin: 10px 0px;
+  margin: 5px 0px;
   text-align: center;
   border-radius: 10px;
  
 }
 .topListNum{
   background-color: rgb(64, 63, 63);
-  padding: 20px;
-  margin: 15px;
+  padding: 14px;
+  margin: 10px;
   color: white;
   
 }
@@ -408,7 +418,7 @@ main a:hover{
 }
 
 .container-top-right{
-  margin-right: 20px;
+  margin-right: 15px;
   margin-top: 50px;
   display: flex;
   justify-content: center;
@@ -462,7 +472,7 @@ main a:hover{
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 
-  padding: 20px;
+  padding: 10px;
   text-align: center;
   margin-bottom: 10px;
 }
@@ -470,14 +480,14 @@ main a:hover{
 
 .date {
   color: #999;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   margin-bottom: 10px;
 
 }
 
 .time {
   color: #333;
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: bold;
   margin-bottom: 5px;
 }
@@ -492,10 +502,10 @@ main a:hover{
   border: 1px solid #ccc;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-
-  padding: 4px;
+  padding: 2px;
   text-align: center;
   margin-bottom: 10px;
+
 }
 .social-icons li{
   display: flex;
@@ -661,7 +671,7 @@ footer > p{
   }
 
   .top-head{
-      width: 30%;
+      width: 29%;
   }
   .top-head:last-child{
 
@@ -669,7 +679,7 @@ footer > p{
 
 
   .nav-bar{
-      flex: 1 0 auto;
+      width: 40%;
       height: 100%;
       background: transparent;
   }

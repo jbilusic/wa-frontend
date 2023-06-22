@@ -35,7 +35,7 @@
         async created() {
             try {
                 const response = await fetch(`http://localhost:3000/article/latest`,{
-                method: 'GET',credentials: 'include',
+                method: 'GET',
             })
             const data = await response.json();
             this.mainArticle = data;

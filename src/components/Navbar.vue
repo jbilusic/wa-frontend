@@ -54,9 +54,6 @@
                 <span>{{ user }}</span>
               </div>
 
-              <div id="namePlace">
-                <span>{{ user }}</span>
-              </div>
              
               <div class="loginIcon" v-if="user == 'guest'">
             
@@ -93,17 +90,17 @@
         links: [
           { text: "Naslovna", url: "/" },
           { text: "Lifestyle", url: "#2" },
-          { text: "Schi/Tech", url: "#3" },
+          /* { text: "Schi/Tech", url: "#3" },
           { text: "Sport", url: "#4" },
-          { text: "Viral", url: "#5" },
+          { text: "Viral", url: "#5" }, */
           { text: "Artikl kreator", url: "/articleMaker" },
         ],
         links2: [
          { text: "Naslovna", url: "/" },
          { text: "Lifestyle", url: "#2" },
-         { text: "Schi/Tech", url: "#3" },
+        /*  { text: "Schi/Tech", url: "#3" },
          { text: "Sport", url: "#4" },
-         { text: "Viral", url: "#5" },
+         { text: "Viral", url: "#5" }, */
        ],
         title: "WEBNEWS",
         search: "",

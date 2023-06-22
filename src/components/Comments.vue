@@ -61,7 +61,7 @@
     async created() {
     try {
       const articleId = this.$route.params.id;
-      const response = await fetch(`http://localhost:3000/article/getById/${articleId}`);
+      const response = await fetch(`http://localhost:3000/article/data/${articleId}`);
       const data = await response.json();
       this.comments = data.article.comments;
       this.getUsername()
@@ -123,7 +123,7 @@
       const token = localStorage.getItem('token');
       const articleId = this.$route.params.id;
       const response = await fetch('http://localhost:3000/comments/add', {
-        method: 'POST',credentials: 'include',
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer ' + token
@@ -135,7 +135,7 @@
       });
       const data = await response.json();
       if(response.ok){
-        const updatedResponse = await fetch(`http://localhost:3000/article/getById/${articleId}`);
+        const updatedResponse = await fetch(`http://localhost:3000/article/data/${articleId}`);
       const updatedData = await updatedResponse.json();
       this.comments = updatedData.article.comments;
       let i = 0;
@@ -171,7 +171,7 @@
       try {
         const token = localStorage.getItem('token');
         const articleId = this.$route.params.id;
-        const response = await fetch(`http://localhost:3000/comments/delete/${articleId}/${commentId}`, {
+        const response = await fetch(`http://localhost:3000/comments/${articleId}/${commentId}`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
@@ -180,7 +180,7 @@
         });
 
         if (response.status === 200) {
-          const updatedResponse = await fetch(`http://localhost:3000/article/getById/${articleId}`);
+          const updatedResponse = await fetch(`http://localhost:3000/article/data/${articleId}`);
           const updatedData = await updatedResponse.json();
           this.comments = updatedData.article.comments;
           let i = 0;
@@ -227,7 +227,7 @@
         });
 
       if (response.status === 200) {
-        const updatedResponse = await fetch(`http://localhost:3000/article/getById/${articleId}`);
+        const updatedResponse = await fetch(`http://localhost:3000/article/data/${articleId}`);
         const updatedData = await updatedResponse.json();
         this.comments = updatedData.article.comments;
         let i = 0;
@@ -273,7 +273,7 @@
         });
 
         if (response.status === 200) {
-          const updatedResponse = await fetch(`http://localhost:3000/article/getById/${articleId}`);
+          const updatedResponse = await fetch(`http://localhost:3000/article/data/${articleId}`);
           const updatedData = await updatedResponse.json();
           this.comments = updatedData.article.comments;
           let i = 0;
