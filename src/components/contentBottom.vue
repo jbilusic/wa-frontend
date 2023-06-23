@@ -41,7 +41,7 @@
 
           try {
             const response = await fetch(
-              `http://localhost:3000/article/latestArticles?start=${this.num}`
+              `https://webnews-jbilusic.onrender.com/article/latestArticles?start=${this.num}`
             );
             const data = await response.json();
             this.articles = data;
@@ -57,16 +57,16 @@
         methods: {
           getImageUrl(img) {
             if (!img) {
-              return "http://localhost:3000/images/slika.png";
+              return "https://webnews-jbilusic.onrender.com/images/slika.png";
             } else {
-              return `http://localhost:3000/images/${img}`;
+              return `https://webnews-jbilusic.onrender.com/images/${img}`;
             }
           },
           async addArticles() {
             /* console.log("dodaj 4 nova"); */
             try {
               const response = await fetch(
-                `http://localhost:3000/article/latestArticles?start=${this.num}`
+                `https://webnews-jbilusic.onrender.com/article/latestArticles?start=${this.num}`
               );
               const data = await response.json();
               this.articles = [...this.articles, ...data];

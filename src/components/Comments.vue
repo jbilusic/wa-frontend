@@ -61,7 +61,7 @@
     async created() {
     try {
       const articleId = this.$route.params.id;
-      const response = await fetch(`http://localhost:3000/article/data/${articleId}`);
+      const response = await fetch(`https://webnews-jbilusic.onrender.com/article/data/${articleId}`);
       const data = await response.json();
       this.comments = data.article.comments;
       this.getUsername()
@@ -74,7 +74,7 @@
     async getUsername() {
       try {
         const token = localStorage.getItem('token');
-        const response = await fetch(`http://localhost:3000/`, {
+        const response = await fetch(`https://webnews-jbilusic.onrender.com/`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -122,7 +122,7 @@
     try {
       const token = localStorage.getItem('token');
       const articleId = this.$route.params.id;
-      const response = await fetch('http://localhost:3000/comments/add', {
+      const response = await fetch('https://webnews-jbilusic.onrender.com/comments/add', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -135,7 +135,7 @@
       });
       const data = await response.json();
       if(response.ok){
-        const updatedResponse = await fetch(`http://localhost:3000/article/data/${articleId}`);
+        const updatedResponse = await fetch(`https://webnews-jbilusic.onrender.com/article/data/${articleId}`);
       const updatedData = await updatedResponse.json();
       this.comments = updatedData.article.comments;
       let i = 0;
@@ -171,7 +171,7 @@
       try {
         const token = localStorage.getItem('token');
         const articleId = this.$route.params.id;
-        const response = await fetch(`http://localhost:3000/comments/${articleId}/${commentId}`, {
+        const response = await fetch(`https://webnews-jbilusic.onrender.com/comments/${articleId}/${commentId}`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
@@ -180,7 +180,7 @@
         });
 
         if (response.status === 200) {
-          const updatedResponse = await fetch(`http://localhost:3000/article/data/${articleId}`);
+          const updatedResponse = await fetch(`https://webnews-jbilusic.onrender.com/article/data/${articleId}`);
           const updatedData = await updatedResponse.json();
           this.comments = updatedData.article.comments;
           let i = 0;
@@ -214,7 +214,7 @@
       try {
         const token = localStorage.getItem('token');
         const articleId = this.$route.params.id;
-        const response = await fetch(`http://localhost:3000/comments/like`, {
+        const response = await fetch(`https://webnews-jbilusic.onrender.com/comments/like`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
@@ -227,7 +227,7 @@
         });
 
       if (response.status === 200) {
-        const updatedResponse = await fetch(`http://localhost:3000/article/data/${articleId}`);
+        const updatedResponse = await fetch(`https://webnews-jbilusic.onrender.com/article/data/${articleId}`);
         const updatedData = await updatedResponse.json();
         this.comments = updatedData.article.comments;
         let i = 0;
@@ -260,7 +260,7 @@
        try {
         const token = localStorage.getItem('token');
         const articleId = this.$route.params.id;
-        const response = await fetch(`http://localhost:3000/comments/dislike`, {
+        const response = await fetch(`https://webnews-jbilusic.onrender.com/comments/dislike`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
@@ -273,7 +273,7 @@
         });
 
         if (response.status === 200) {
-          const updatedResponse = await fetch(`http://localhost:3000/article/data/${articleId}`);
+          const updatedResponse = await fetch(`https://webnews-jbilusic.onrender.com/article/data/${articleId}`);
           const updatedData = await updatedResponse.json();
           this.comments = updatedData.article.comments;
           let i = 0;

@@ -53,7 +53,7 @@
             if (articleId === undefined) {
                 return;
             }else{
-              return `http://localhost:3000/images/${this.postData.img}`;
+              return `https://webnews-jbilusic.onrender.com/images/${this.postData.img}`;
             }
           },
       },
@@ -79,7 +79,7 @@
            formData.append("img", this.postData.img)
            
           console.log(formData);
-          const response = await fetch(`http://localhost:3000/protectedArticle/modify/${articleId}`, {
+          const response = await fetch(`https://webnews-jbilusic.onrender.com/protectedArticle/modify/${articleId}`, {
           method: 'PATCH',
           headers: {
           'Authorization': 'Bearer ' + token
@@ -144,7 +144,7 @@
          if (articleId === undefined) {
             return;
          }
-         const response = await fetch(`http://localhost:3000/article/data/${articleId}`);
+         const response = await fetch(`https://webnews-jbilusic.onrender.com/article/data/${articleId}`);
          const data = await response.json();
          this.article = data.article;
          this.postData.title = data.article.title;

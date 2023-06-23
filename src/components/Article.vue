@@ -73,7 +73,7 @@ import Comments from './Comments.vue';
     async getUsername() {
       try {
         const token = localStorage.getItem('token');
-        const response = await fetch(`http://localhost:3000/`, {
+        const response = await fetch(`https://webnews-jbilusic.onrender.com/`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -107,7 +107,7 @@ import Comments from './Comments.vue';
         async getProfileData() {
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`http://localhost:3000/users/profile`, {
+            const response = await fetch(`https://webnews-jbilusic.onrender.com/users/profile`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -144,7 +144,7 @@ import Comments from './Comments.vue';
                 this.bookmark= false;
                 document.getElementById("imgBookmark").src="/src/assets/imgs/crven.png";
                 try { 
-                    const response = await fetch(`http://localhost:3000/users/bookmark/${articleId}`, {
+                    const response = await fetch(`https://webnews-jbilusic.onrender.com/users/bookmark/${articleId}`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -159,7 +159,7 @@ import Comments from './Comments.vue';
                     this.bookmark= true;
                     document.getElementById("imgBookmark").src="/src/assets/imgs/zelen.png";
                 try { 
-                    const response = await fetch(`http://localhost:3000/users/bookmark/${articleId}`, {
+                    const response = await fetch(`https://webnews-jbilusic.onrender.com/users/bookmark/${articleId}`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -182,7 +182,7 @@ import Comments from './Comments.vue';
             const token = localStorage.getItem('token');
             console.log(articleId);
   
-        fetch(`http://localhost:3000/protectedArticle/delete/${articleId}`, {
+        fetch(`https://webnews-jbilusic.onrender.com/protectedArticle/delete/${articleId}`, {
             method: 'DELETE',
             headers: {
                 'Authorization': 'Bearer ' + token
@@ -207,11 +207,11 @@ import Comments from './Comments.vue';
     async created() {
         try {
             const articleId = this.$route.params.id;
-            const response = await fetch(`http://localhost:3000/article/data/${articleId}`);
+            const response = await fetch(`https://webnews-jbilusic.onrender.com/article/data/${articleId}`);
             const data = await response.json();
             this.getUsername()
             this.article = data.article;
-            this.img = `http://localhost:3000/images/${this.article.img}`;
+            this.img = `https://webnews-jbilusic.onrender.com/images/${this.article.img}`;
         } catch (error) {
             console.error(error);
             this.error = "Error retrieving article";

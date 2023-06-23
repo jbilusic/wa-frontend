@@ -18,7 +18,7 @@ export default {
   async created() {
     try {
       const articleId = this.$route.params.id;
-      const response = await fetch(`http://localhost:3000/article/data/${articleId}`);
+      const response = await fetch(`https://webnews-jbilusic.onrender.com/article/data/${articleId}`);
       const data = await response.json();
       this.article = data.article;
     } catch (error) {

@@ -20,7 +20,7 @@ let  data = {
 
 const textSide3 = document.querySelector('.textSide4');
 
-const postImg = "http://localhost:3000/article/add";
+const postImg = "https://webnews-jbilusic.onrender.com/article/add";
 
 let changedImg = false;
 const fileTypes = [

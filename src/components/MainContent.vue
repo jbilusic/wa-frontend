@@ -34,7 +34,7 @@
         },
         async created() {
             try {
-                const response = await fetch(`http://localhost:3000/article/latest`,{
+                const response = await fetch(`https://webnews-jbilusic.onrender.com/article/latest`,{
                 method: 'GET',
             })
             const data = await response.json();
@@ -47,9 +47,9 @@
         methods: {
             getImageUrl(img) {
                 if (!img) {
-                    return "http://localhost:3000/images/slika.png";
+                    return "https://webnews-jbilusic.onrender.com/images/slika.png";
                 } else {
-                    return `http://localhost:3000/images/${img}`;
+                    return `https://webnews-jbilusic.onrender.com/images/${img}`;
                 }
             }
         }

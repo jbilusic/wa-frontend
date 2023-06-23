@@ -59,7 +59,7 @@
             async fetchArticles() {
                 try {
                     const query=this.$route.query.q;
-                    const response = await fetch(`http://localhost:3000/article/searchByQuery?q=${query}`);
+                    const response = await fetch(`https://webnews-jbilusic.onrender.com/article/searchByQuery?q=${query}`);
                     const data = await response.json();
                     if(response.status == 204){
                         console.log("nema article");
@@ -83,9 +83,9 @@
         
             getImageUrl(img) {
                 if (!img) {
-                    return "http://localhost:3000/images/slika.png";
+                    return "https://webnews-jbilusic.onrender.com/images/slika.png";
                 } else {
-                    return `http://localhost:3000/images/${img}`;
+                    return `https://webnews-jbilusic.onrender.com/images/${img}`;
                 }
             },
         },

@@ -63,7 +63,7 @@ export default {
           formData.append(`content[${index}]`, paragraph);
         });
         formData.append("img", this.postData.img);
-        const response = await fetch("http://localhost:3000/protectedArticle/add", {
+        const response = await fetch("https://webnews-jbilusic.onrender.com/protectedArticle/add", {
           method: "POST",
           headers: {
             'Authorization': 'Bearer ' + token

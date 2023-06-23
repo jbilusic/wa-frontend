@@ -88,7 +88,7 @@ export default {
     async getProfileData() {
       try {
         const token = localStorage.getItem('token');
-        const response = await fetch(`http://localhost:3000/users/profile`, {
+        const response = await fetch(`https://webnews-jbilusic.onrender.com/users/profile`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
