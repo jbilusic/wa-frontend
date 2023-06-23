@@ -10,7 +10,7 @@
                             <h2 class="date">{{ day }},  {{ date }}</h2>
                             <h2 class="time">{{ time }}</h2>
                             </div>
-                        <h3 style="font-size: 14px;">{{ leftTitle }}</h3>
+                        <h3 style="font-size: 15px;">{{ leftTitle }}</h3>
                         <div class="news-item" v-for="(content, index) in leftContent" :key="index">
                             <div class="ref">
                             <span class="topListNum">{{ index+=1 }}</span>
@@ -40,7 +40,7 @@
                                 </li>
                             </ul>
                         </div>
-                            <h3 style="font-size: 14px;">{{ rightTitle }}</h3>
+                            <h3 style="font-size: 15px;">{{ rightTitle }}</h3>
                             <div class="news-item"  v-for="(content, index) in rightContent" :key="index">
                             <div class="ref">
                                 <span class="topListNum">{{ index+=1 }}</span>

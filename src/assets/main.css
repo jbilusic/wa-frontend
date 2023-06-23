@@ -215,7 +215,7 @@ width: 100%;
 }
 #secondaryArticles{
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: 50% 50%;
   width: 99%;
 }
 #secondaryArticles > a{
@@ -448,6 +448,7 @@ width: 100%;
 
 .web-name{
   color: white;
+  margin-left: 15px;
 }
 
 .textSide2 h3{
