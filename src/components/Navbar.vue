@@ -28,14 +28,15 @@
           <nav v-if="isAdmin">
             <ul>
               <li v-for="(link, index) in links" :key="index">
-                <a :href="link.url">{{ link.text }}</a>
+                <!-- <a :href="link.url"></a> -->
+                <router-link :to="link.url">{{ link.text }}</router-link>
               </li>
             </ul>
           </nav>
           <nav v-else>
             <ul>
               <li v-for="(link, index) in links2" :key="index">
-                <a :href="link.url">{{ link.text }}</a>
+                <router-link :to="link.url">{{ link.text }}</router-link>
               </li>
             </ul>
           </nav>
